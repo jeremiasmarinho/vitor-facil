@@ -31,15 +31,15 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-      <h1 className="text-4xl font-bold text-red-600 mb-8">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-gray-800 to-gray-700 p-6">
+      <h1 className="text-5xl font-bold text-white mb-8 drop-shadow-lg">
         Vitor Fácil - Gerador de Apostas
       </h1>
 
       {combinacoes.length === 0 ? (
         <>
-          <div className="mb-4">
-            <label className="mr-2 text-lg font-medium text-gray-700">
+          <div className="bg-white shadow-lg p-6 rounded-lg w-full max-w-md text-center mb-6">
+            <label className="block text-lg font-semibold text-gray-700 m-2">
               Quantidade de jogos desejada:
             </label>
             <input
@@ -50,28 +50,28 @@ export default function Home() {
                 setQuantidadeJogos(Number.isNaN(valor) ? 1 : valor);
               }}
               min={1}
-              className="px-4 text-gray-950 py-2 border rounded-lg w-20 text-center focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-4 py-2 border text-gray-900 border-gray-300 rounded-lg w-20 text-center focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
           <button
             onClick={gerarApostas}
-            className="px-6 py-2 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 mb-6"
+            className="px-6 py-3 bg-green-600 text-white rounded-lg shadow-lg hover:bg-green-700 transition-transform transform hover:scale-105"
           >
             Gerar Apostas
           </button>
         </>
       ) : (
-        <div className="w-full max-w-4xl">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+        <div className="w-full max-w-4xl space-y-6">
+          <h2 className="text-3xl font-semibold text-white mb-4 text-center">
             Cartelas Geradas:
           </h2>
           {cartelas.map((cartela, index) => (
             <div
               key={index}
-              className="bg-gray-100 p-10 rounded-lg shadow-lg mb-6"
+              className="bg-white shadow-lg p-8 rounded-lg transition-transform transform hover:scale-105"
             >
-              <h3 className="text-xl font-medium text-gray-700 mb-4">
+              <h3 className="text-xl font-semibold text-gray-700 mb-2">
                 Cartela {index + 1}
               </h3>
               <ul className="list-disc space-y-2">
@@ -86,18 +86,20 @@ export default function Home() {
               </ul>
               <button
                 onClick={() => imprimirCartela(cartela)}
-                className="px-6 py-2 bg-green-600 text-white rounded-lg shadow-lg hover:bg-green-700 mt-4"
+                className="px-6 py-2 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 mt-4 transition-transform transform hover:scale-105"
               >
                 Imprimir Cartela
               </button>
             </div>
           ))}
-          <button
-            onClick={voltarInicio}
-            className="px-6 py-2 bg-gray-600 text-white rounded-lg shadow-lg hover:bg-gray-700 mt-4"
-          >
-            Voltar ao Início
-          </button>
+          <div className="text-center">
+            <button
+              onClick={voltarInicio}
+              className="px-6 py-2 bg-gray-500 text-white rounded-lg shadow-lg hover:bg-gray-700 mt-4 transition-transform transform hover:scale-105"
+            >
+              Voltar ao Início
+            </button>
+          </div>
         </div>
       )}
     </div>
